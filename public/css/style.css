@@ -1,0 +1,111 @@
+* {
+ margin: 0;
+ padding: 0;
+}
+
+table{
+  border-collapse:collapse;
+  border:none;
+  border-spacing:0;
+}
+th,td{
+  vertical-align:top;
+  border:solid 1px #000;
+  font-weight:normal;
+  text-align:left;
+}
+caption{
+  text-align:left;
+}
+
+.container {
+  width: 1020px;
+  margin: 0 auto;
+}
+
+/* initilize  end */
+
+.error {
+  color: tomato;
+  font-size: 14px;
+
+}
+
+header {
+  border-bottom: 1px solid #000;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+/* header end */
+
+.register-wrapper {
+  margin-bottom: 20px;
+
+}
+
+
+ul li {
+  list-style: none;
+}
+
+label {
+  margin-right: 10px;
+  width: 100px;
+  float: left;
+}
+
+input {
+  padding: 2px 5px;
+}
+
+/* register-wrapper  end */
+
+table {
+  width: 90%;
+}
+
+table , tr, td ,th {
+  border: 1px solid #000;
+}
+
+td , th {
+  padding: 10px;
+  vertical-align: middle;
+}
+
+th {
+  text-align: center;
+  font-weight: bold;
+}
+
+.item_pic, .item_status, .item_delete, .item_stock {
+  text-align: center;
+}
+
+.item_pic { 
+  padding: 5px;
+}
+
+.item_pic img {
+  width: 100px;
+}
+
+.item_stock input {
+  width: 50px;
+}
+
+/* list-wrapper end */
+
+footer {
+  margin-top: 20px;
+  border-top: 1px solid #000;
+  padding-top: 10px;
+  width: 100%;
+  text-align: center;
+}

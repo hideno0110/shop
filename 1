@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateEcItemStocksTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('ec_item_stocks', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('item_id');
+            $table->integer('stock');
+            $table->timestamps();
+        
+            $table->foreign('item_id')
+                  ->references('item_id')
+                  ->on('ec_item_masters')
+                  ->onDelete('cascade');
+        
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('ec_item_stocks');
+    }
+}
