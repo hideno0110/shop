@@ -43,24 +43,32 @@ class CmsController extends Controller
       'img'=>'required|mimes:jpg,jpeg,gif,png',
       'status'=>'required'
     ]);
-//    DB::transaction(function()
-//    {
-      $item = new Item();
-      $item->name = $request->name;
-      $item->price = $request->price;
-      $item->status = $request->status;
 
-      $file = $request->file('img');
-      $filename = $file->getClientOriginalName();
-      $file->move(public_path('images'), $filename);
-      $item->img = $filename;
-      $item->save();
+      DB::transaction(function() use ($request)
+      {
+        try {
+          $item = new Item();
+          $item->name = $request->name;
+          $item->price = $request->price;
+          $item->status = $request->status;
 
-      $stock = new Item_stock();
-      $stock->item_id = $item->id;
-      $stock->stock = $request->stock;
-      $stock->save();
-//    });
+          $file = $request->file('img');
+          $filename = $file->getClientOriginalName();
+          $file->move(public_path('images'), $filename);
+          $item->img = $filename;
+          $item->save();
+
+          $stock = new Item_stock();
+          $stock->item_id = $item->id;
+          $stock->stock = $request->stock;
+          $stock->save();
+          DB::commit();
+        } catch (Exception $e) {
+          DB::rollback();
+          return Redirect::back(); 
+        };
+      }
+      );
 
     return redirect('/cms')->with('flash_message', '登録完了');
   }

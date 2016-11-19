@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Item;
 use App\Cart;
 use App\Item_stock;
-  
+use Illuminate\Support\Facades\Redirect;
 
 class CartController extends Controller
 {
@@ -44,6 +44,18 @@ class CartController extends Controller
     $carts = Cart::with('item');
     $carts->delete();
 
-    return view('shop.cart.complete',['tmp_carts'=>$tmp_carts, 'total_price'=>$total_price])->with('flash_message', 'ご購入ありがとうございました');
+   //  return view('shop.cart.complete',['tmp_carts'=>$tmp_carts, 'total_price'=>$total_price])->with('flash_message', 'ご購入ありがとうございました');
+      // -> このやり方だと、リロードした時に再度処理が走ってしまう。完了ページはリダイレクトさせる必要がある 
+ 
+    //return redirect('/shop/cart/complete',['tmp_carts'=>$tmp_carts, 'total_price'=>$total_price])->with('flash_message', '削除しました');
+    return redirect('/shop')->with('flash_message', 'ありがとうございました');;
+      // -> The HTTP status code "1" is not valid.
+     
+  //  return Redirect::to('/shop/cart/complete', compact('tmp_carts','total_price'));
+      // -> The HTTP status code "1" is not valid. 
+
+  //  return redirect('/shop/cart/complete')->with(compact('tmp_carts','total_price'));
+     // -> MethodNotAllowedHttpException in RouteCollection.php line 218:
+
   }
 }
