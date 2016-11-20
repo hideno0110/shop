@@ -108,6 +108,11 @@ p.flash_message {
   vertical-align:middle;
 }
 
+.item_name {
+  height:50px;
+}
+
+
 span.sold {
   display: inline-block;
   color: red;
@@ -237,5 +242,10 @@ footer {
   text-align: center;
 }
 
-
-
+.render {
+  clear:both;
+  text-align:center;
+}
+.render li{
+  display: inline-block;
+}

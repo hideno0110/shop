@@ -45,7 +45,7 @@ class CartController extends Controller
     $carts->delete();
 
    //  return view('shop.cart.complete',['tmp_carts'=>$tmp_carts, 'total_price'=>$total_price])->with('flash_message', 'ご購入ありがとうございました');
-      // -> このやり方だと、リロードした時に再度処理が走ってしまう。完了ページはリダイレクトさせる必要がある 
+   // -> このやり方だと、リロードした時に再度処理が走ってしまう。完了ページはリダイレクトさせる必要がある 
  
     //return redirect('/shop/cart/complete',['tmp_carts'=>$tmp_carts, 'total_price'=>$total_price])->with('flash_message', '削除しました');
     return redirect('/shop')->with('flash_message', 'ありがとうございました');;
