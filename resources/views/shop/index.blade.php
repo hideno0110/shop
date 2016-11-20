@@ -10,6 +10,12 @@
 
   <div class="items_wrapper">
 
+    <form action="{{ action('ShopController@index') }}" method="get">
+      {{ csrf_field()  }}
+      <input type="text" name="name" placeholder="商品名"> 
+      <input type="submit" value="商品を検索する">
+    </form>
+
     @foreach($items as $item) 
       <div class="item">
         <div class="item_pic"><img src="/images/{{ $item->img }}"></div>
@@ -27,6 +33,6 @@
         </div>
       </div>
     @endforeach
-
+    <div class="render">{!! $items->render() !!} </div>
   </div>
 @endsection
